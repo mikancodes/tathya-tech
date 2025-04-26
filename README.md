@@ -127,5 +127,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 Tathya Technologies - [contact@tathyatech.com](mailto:contact@tathyatech.com)
-
-Project Link: [https://github.com/your-username/tathy-website-rebuild1](https://github.com/your-username/tathy-website-rebuild1)
