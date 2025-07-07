@@ -21,64 +21,116 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(offset > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white shadow-md py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-surface-primary/80 backdrop-blur-xl shadow-soft border-b border-primary-200/20'
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
-          <Logo />
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Logo />
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item, index) => (
-              <Link
+              <motion.div
                 key={index}
-                to={item.href}
-                className={`font-heading text-base font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300 ${
-                  location.pathname === item.href 
-                    ? 'text-accent after:w-full' 
-                    : scrolled ? 'text-text-primary' : 'text-text-primary'
-                }`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {item.label}
-              </Link>
+                <Link
+                  to={item.href}
+                  className={`relative px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 group ${
+                    location.pathname === item.href 
+                      ? 'text-accent bg-accent/10' 
+                      : 'text-text-primary hover:text-accent hover:bg-accent/5'
+                  }`}
+                >
+                  {item.label}
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent rounded-full"
+                    animate={{
+                      width: location.pathname === item.href ? '60%' : '0%',
+                      x: location.pathname === item.href ? '-50%' : '-50%',
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
           {/* Contact Button */}
-          <Link
-            to="/contact"
-            className="hidden md:inline-flex bg-accent hover:bg-accent-dark text-white px-6 py-2 rounded-md font-heading font-medium transition-colors duration-200"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="hidden md:block"
           >
-            Get Started
-          </Link>
+            <Link
+              to="/contact"
+              className="relative overflow-hidden bg-accent hover:bg-accent-dark text-white px-6 py-2.5 rounded-xl font-body font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-medium group"
+            >
+              <span className="relative z-10">Get Started</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-accent-light to-accent-dark opacity-0 group-hover:opacity-100"
+                transition={{ duration: 0.3 }}
+              />
+            </Link>
+          </motion.div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-text-primary"
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden p-2 rounded-lg text-text-primary hover:bg-primary-100 transition-colors duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={24} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={24} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </div>
 
@@ -89,38 +141,51 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-primary-200"
+            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="md:hidden bg-surface-primary/95 backdrop-blur-xl border-t border-primary-200/20"
           >
-            <div className="container mx-auto px-4 py-4">
-              <nav className="flex flex-col space-y-4">
+            <div className="container mx-auto px-6 py-6">
+              <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
-                  <Link
+                  <motion.div
                     key={index}
-                    to={item.href}
-                    className={`font-heading text-lg py-2 ${
-                      location.pathname === item.href 
-                        ? 'text-accent font-semibold' 
-                        : 'text-text-primary'
-                    }`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <Link
+                      to={item.href}
+                      className={`block px-4 py-3 rounded-xl font-body text-base transition-all duration-200 ${
+                        location.pathname === item.href 
+                          ? 'text-accent bg-accent/10 font-semibold' 
+                          : 'text-text-primary hover:text-accent hover:bg-accent/5'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                  className="pt-4"
+                >
+                  <Link
+                    to="/contact"
+                    className="block bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-xl font-body font-medium transition-all duration-200 text-center"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.label}
+                    Get Started
                   </Link>
-                ))}
-                <Link
-                  to="/contact"
-                  className="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-md font-heading font-medium transition-colors duration-200 text-center mt-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Get Started
-                </Link>
+                </motion.div>
               </nav>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 

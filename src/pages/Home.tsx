@@ -8,14 +8,14 @@ import CallToAction from '../components/CallToAction';
 
 const Home: React.FC = () => {
   return (
-    <>
+    <div className="bg-surface-tertiary">
       <Hero />
       <ServicesPreview />
       <PortfolioPreview />
       <About />
       <Testimonials />
       <CallToAction />
-    </>
+    </div>
   );
 };
 
