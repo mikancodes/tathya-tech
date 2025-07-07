@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
@@ -21,19 +22,19 @@ const Hero: React.FC = () => {
                 We build custom software solutions that drive efficiency, growth, and digital transformation for businesses of all sizes.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a
-                  href="#services"
+                <Link
+                  to="/services"
                   className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-md font-heading font-medium transition-colors duration-200"
                 >
                   Explore Services
                   <ArrowRight size={16} className="ml-2" />
-                </a>
-                <a
-                  href="#contact"
+                </Link>
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-text-primary border border-primary-300 px-8 py-3 rounded-md font-heading font-medium transition-colors duration-200"
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CallToAction: React.FC = () => {
   return (
@@ -20,19 +21,19 @@ const CallToAction: React.FC = () => {
             Partner with us to leverage cutting-edge technology and expert guidance for your next project.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-primary-700 px-8 py-3 rounded-md font-heading font-medium transition-colors duration-200"
             >
               Get Started
               <ArrowRight size={16} className="ml-2" />
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              to="/services"
               className="inline-flex items-center justify-center bg-transparent hover:bg-primary-600 text-white border border-white px-8 py-3 rounded-md font-heading font-medium transition-colors duration-200"
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

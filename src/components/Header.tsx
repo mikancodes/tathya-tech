@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { navItems } from '../data';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'About', href: '/about' },
+  { label: 'Team', href: '/team' },
+  { label: 'Contact', href: '/contact' },
+];
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,25 +49,27 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
-              <a
+              <Link
                 key={index}
-                href={item.href}
+                to={item.href}
                 className={`font-heading text-base font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300 ${
-                  scrolled ? 'text-text-primary' : 'text-text-primary'
+                  location.pathname === item.href 
+                    ? 'text-accent after:w-full' 
+                    : scrolled ? 'text-text-primary' : 'text-text-primary'
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Contact Button */}
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="hidden md:inline-flex bg-accent hover:bg-accent-dark text-white px-6 py-2 rounded-md font-heading font-medium transition-colors duration-200"
           >
             Get Started
-          </a>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -83,22 +95,26 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-4">
                 {navItems.map((item, index) => (
-                  <a
+                  <Link
                     key={index}
-                    href={item.href}
-                    className="font-heading text-text-primary text-lg py-2"
+                    to={item.href}
+                    className={`font-heading text-lg py-2 ${
+                      location.pathname === item.href 
+                        ? 'text-accent font-semibold' 
+                        : 'text-text-primary'
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-md font-heading font-medium transition-colors duration-200 text-center mt-2"
                   onClick={() => setIsOpen(false)}
                 >
                   Get Started
-                </a>
+                </Link>
               </nav>
             </div>
           </motion.div>

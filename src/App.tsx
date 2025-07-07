@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import About from './components/About';
-import Team from './components/Team';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import About from './pages/About';
+import Team from './pages/Team';
+import Contact from './pages/Contact';
 
 function App() {
   useEffect(() => {
@@ -17,20 +16,22 @@ function App() {
   }, []);
 
   return (
-    <div className="font-body">
-      <Header />
-      <main>
-        <Hero />
-        <Services />
-        <Portfolio />
-        <About />
-        <Team />
-        <Testimonials />
-        <CallToAction />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="font-body">
+        <Header />
+        <main className="pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
