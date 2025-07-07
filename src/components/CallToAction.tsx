@@ -103,6 +103,7 @@ const CallToAction: React.FC = () => {
       </div>
     </section>
   )
+  )
   );
 };
 
