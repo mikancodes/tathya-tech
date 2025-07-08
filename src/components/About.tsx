@@ -125,6 +125,7 @@ const About: React.FC = () => {
                 className="relative z-10 rounded-3xl overflow-hidden shadow-large"
                 whileHover={{ scale: 1.02, rotateY: 5 }}
                 transition={{ duration: 0.6 }}
+                style={{ maxHeight: '450px' }}
               >
                 <img
                   src="https://images.pexels.com/photos/3182811/pexels-photo-3182811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -145,7 +146,7 @@ const About: React.FC = () => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-soft"></div>
-                  <span className="font-body text-sm font-medium text-text-primary">Innovation First</span>
+                  <span className="font-body text-sm font-medium text-text-primary whitespace-nowrap">Innovation First</span>
                 </div>
               </motion.div>
               
@@ -159,7 +160,7 @@ const About: React.FC = () => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-accent rounded-full animate-pulse-soft"></div>
-                  <span className="font-body text-sm font-medium text-text-primary">Quality Driven</span>
+                  <span className="font-body text-sm font-medium text-text-primary whitespace-nowrap">Quality Driven</span>
                 </div>
               </motion.div>
               

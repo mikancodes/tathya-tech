@@ -19,18 +19,6 @@ const CompanyMarquee: React.FC = () => {
       name: 'AKD Network',
       logo: '/image.png',
     },
-    {
-      name: 'Inventum',
-      logo: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&dpr=2',
-    },
-    {
-      name: 'NextGen',
-      logo: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&dpr=2',
-    },
-    {
-      name: 'DigitalEdge',
-      logo: 'https://images.pexels.com/photos/3182811/pexels-photo-3182811.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&dpr=2',
-    },
   ];
 
   const slogans = [
@@ -97,6 +85,7 @@ const CompanyMarquee: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="overflow-hidden"
         >
           <Marquee
             gradient={true}

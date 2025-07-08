@@ -80,6 +80,9 @@ export default {
         'apple': '0 4px 20px rgba(0, 0, 0, 0.08)',
         'glow': '0 0 20px rgba(0, 122, 255, 0.15)',
         'floating': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'apple': '0 4px 20px rgba(0, 0, 0, 0.08)',
+        'glow': '0 0 20px rgba(0, 122, 255, 0.15)',
+        'floating': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
       },
       backdropBlur: {
         'xs': '2px',

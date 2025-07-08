@@ -62,8 +62,8 @@ const Header: React.FC = () => {
                   to={item.href}
                   className={`relative px-4 py-2 rounded-xl font-body text-sm font-medium transition-all duration-300 group ${
                     location.pathname === item.href 
-                      ? 'text-accent bg-accent/10' 
-                      : 'text-text-primary hover:text-accent hover:bg-accent/5'
+                      ? 'text-accent' 
+                      : 'text-text-primary hover:text-accent'
                   }`}
                 >
                   <motion.span
@@ -102,13 +102,9 @@ const Header: React.FC = () => {
             >
               <Link
                 to="/contact"
-                className="relative overflow-hidden bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-xl font-body font-medium transition-all duration-300 shadow-medium hover:shadow-large group"
+                className="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-xl font-body font-medium transition-all duration-300 shadow-medium hover:shadow-large"
               >
-                <span className="relative z-10">Get Started</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent-light to-accent-dark opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
+                Get Started
               </Link>
             </motion.div>
           </motion.div>
@@ -171,7 +167,7 @@ const Header: React.FC = () => {
                       to={item.href}
                       className={`block px-4 py-3 rounded-xl font-body text-base transition-all duration-200 ${
                         location.pathname === item.href 
-                          ? 'text-accent bg-accent/10 font-semibold' 
+                          ? 'text-accent font-semibold' 
                           : 'text-text-primary hover:text-accent hover:bg-accent/5'
                       }`}
                       onClick={() => setIsOpen(false)}

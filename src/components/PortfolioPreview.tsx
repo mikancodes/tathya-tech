@@ -102,6 +102,8 @@ const PortfolioPreview: React.FC = () => {
                         <motion.div whileHover={{ x: 4 }}>
                           <ExternalLink size={16} className="mr-2" />
                         </motion.div>
+                          <ExternalLink size={16} className="mr-2" />
+                        </motion.div>
                         <span className="font-body text-sm">View Project</span>
                       </motion.div>
                     </div>

@@ -17,6 +17,15 @@ const CallToAction: React.FC = () => {
           <rect width="100%" height="100%" fill="url(#cta-grid)" />
         </svg>
       </div>
+        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
+          <defs>
+            <pattern id="cta-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="1" fill="#000000" fillOpacity="0.05"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#cta-grid)" />
+        </svg>
+      </div>
       
       {/* Floating Elements */}
       <motion.div
