@@ -134,7 +134,7 @@ const ServicesPreview: React.FC = () => {
                 <motion.div
                   className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ x: -10 }}
-                  whileHover={{ x: 0 }}
+                  whileHover={{ x: 4 }}
                 >
                   <ArrowRight className="text-accent" size={20} />
                 </motion.div>

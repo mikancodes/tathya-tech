@@ -19,7 +19,7 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-surface-primary">
+    <section className="py-24 lg:py-32 bg-surface-secondary">
       <div className="container mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -45,7 +45,7 @@ const Testimonials: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -40, scale: 0.95 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="bg-gradient-to-br from-surface-secondary to-surface-primary rounded-3xl p-8 lg:p-12 shadow-large border border-primary-100/50"
+              className="bg-gradient-to-br from-white to-surface-secondary rounded-3xl p-8 lg:p-12 shadow-large border border-primary-100/50"
             >
               <div className="flex flex-col lg:flex-row items-center gap-8">
                 {/* Quote Content */}
@@ -123,7 +123,7 @@ const Testimonials: React.FC = () => {
               onClick={handlePrev}
               whileHover={{ scale: 1.1, x: -2 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-full bg-surface-primary shadow-medium text-text-primary hover:text-accent hover:shadow-large transition-all duration-300 border border-primary-200/50"
+              className="p-3 rounded-full bg-white shadow-medium text-text-primary hover:text-accent hover:shadow-large transition-all duration-300 border border-primary-200/50"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={24} />
@@ -148,7 +148,7 @@ const Testimonials: React.FC = () => {
               onClick={handleNext}
               whileHover={{ scale: 1.1, x: 2 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-full bg-surface-primary shadow-medium text-text-primary hover:text-accent hover:shadow-large transition-all duration-300 border border-primary-200/50"
+              className="p-3 rounded-full bg-white shadow-medium text-text-primary hover:text-accent hover:shadow-large transition-all duration-300 border border-primary-200/50"
               aria-label="Next testimonial"
             >
               <ChevronRight size={24} />

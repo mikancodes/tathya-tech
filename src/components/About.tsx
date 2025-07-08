@@ -20,7 +20,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-surface-primary">
+    <section className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Content */}
@@ -136,7 +136,7 @@ const About: React.FC = () => {
               
               {/* Floating Elements */}
               <motion.div
-                className="absolute -top-6 -right-6 bg-surface-primary p-4 rounded-2xl shadow-large border border-primary-200/20"
+                className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20"
                 initial={{ opacity: 0, rotate: -10 }}
                 whileInView={{ opacity: 1, rotate: 0 }}
                 viewport={{ once: true }}
@@ -150,7 +150,7 @@ const About: React.FC = () => {
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-surface-primary p-4 rounded-2xl shadow-large border border-primary-200/20"
+                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20"
                 initial={{ opacity: 0, rotate: 10 }}
                 whileInView={{ opacity: 1, rotate: 0 }}
                 viewport={{ once: true }}

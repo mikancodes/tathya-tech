@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 
 const Hero: React.FC = () => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 0.5 });
+    
+    if (titleRef.current) {
+      tl.fromTo(titleRef.current.children, 
+        { y: 100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out" }
+      );
+    }
+    
+    if (subtitleRef.current) {
+      tl.fromTo(subtitleRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        "-=0.3"
+      );
+    }
+    
+    if (buttonsRef.current) {
+      tl.fromTo(buttonsRef.current.children,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+        "-=0.2"
+      );
+    }
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-surface-secondary to-primary-50 overflow-hidden">
       {/* Background Pattern */}
@@ -51,47 +83,27 @@ const Hero: React.FC = () => {
               </motion.div>
               
               <div className="overflow-hidden">
-                <motion.h1 
+                <h1 
+                  ref={titleRef}
                   className="font-heading font-bold text-display-large lg:text-6xl xl:text-7xl leading-tight text-text-primary mb-8"
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  Transform Your Business with 
-                  <motion.span 
-                    className="block text-accent"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                  >
-                    Innovative SaaS
-                  </motion.span>
-                  <motion.span 
-                    className="block"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.7 }}
-                  >
-                    Solutions
-                  </motion.span>
-                </motion.h1>
+                  <span className="block">Transform Your Business with</span>
+                  <span className="block text-accent">Innovative SaaS</span>
+                  <span className="block">Solutions</span>
+                </h1>
               </div>
             </motion.div>
             
-            <motion.p 
+            <p 
+              ref={subtitleRef}
               className="font-body text-title-medium text-text-secondary mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
             >
               We build custom software solutions that drive efficiency, growth, and digital transformation for businesses of all sizes.
-            </motion.p>
+            </p>
             
-            <motion.div 
+            <div 
+              ref={buttonsRef}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
             >
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -123,7 +135,7 @@ const Hero: React.FC = () => {
                   Contact Us
                 </Link>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
           
           {/* Image */}
@@ -148,9 +160,9 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent"></div>
               </motion.div>
               
-              {/* Floating Cards */}
+              {/* Floating Cards - Fixed positioning */}
               <motion.div
-                className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
+                className="absolute top-4 right-4 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm z-20"
                 initial={{ opacity: 0, y: 20, rotate: -10 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
@@ -158,12 +170,12 @@ const Hero: React.FC = () => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse-soft"></div>
-                  <span className="font-body text-sm font-medium text-text-primary">99.9% Uptime</span>
+                  <span className="font-body text-sm font-medium text-text-primary whitespace-nowrap">99.9% Uptime</span>
                 </div>
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
+                className="absolute bottom-4 left-4 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm z-20"
                 initial={{ opacity: 0, y: -20, rotate: 10 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 1.4 }}
@@ -171,7 +183,7 @@ const Hero: React.FC = () => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-accent rounded-full animate-pulse-soft"></div>
-                  <span className="font-body text-sm font-medium text-text-primary">24/7 Support</span>
+                  <span className="font-body text-sm font-medium text-text-primary whitespace-nowrap">24/7 Support</span>
                 </div>
               </motion.div>
               

@@ -66,7 +66,7 @@ const PortfolioPreview: React.FC = () => {
               }}
               className="group cursor-pointer"
             >
-              <div className="overflow-hidden rounded-3xl bg-surface-primary shadow-soft hover:shadow-large transition-all duration-500 border border-primary-100/50">
+              <div className="overflow-hidden rounded-3xl bg-white shadow-soft hover:shadow-large transition-all duration-500 border border-primary-100/50">
                 <div className="relative overflow-hidden h-64">
                   <motion.img
                     src={project.image}
@@ -99,7 +99,9 @@ const PortfolioPreview: React.FC = () => {
                         whileHover={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <ExternalLink size={16} className="mr-2" />
+                        <motion.div whileHover={{ x: 4 }}>
+                          <ExternalLink size={16} className="mr-2" />
+                        </motion.div>
                         <span className="font-body text-sm">View Project</span>
                       </motion.div>
                     </div>

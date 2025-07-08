@@ -79,6 +79,7 @@ export default {
         'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         'apple': '0 4px 20px rgba(0, 0, 0, 0.08)',
         'glow': '0 0 20px rgba(0, 122, 255, 0.15)',
+        'floating': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
       },
       backdropBlur: {
         'xs': '2px',
@@ -94,6 +95,7 @@ export default {
         'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
         'text-reveal': 'textReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'marquee': 'marquee 25s linear infinite',
+        'gradient-shift': 'gradientShift 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -135,6 +137,10 @@ export default {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
+        },
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
     },
