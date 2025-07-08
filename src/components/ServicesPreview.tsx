@@ -78,7 +78,7 @@ const ServicesPreview: React.FC = () => {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-surface-primary">
+    <section className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -114,10 +114,10 @@ const ServicesPreview: React.FC = () => {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className={`bg-gradient-to-br ${service.gradient} backdrop-blur-sm rounded-3xl p-8 transition-all duration-500 hover:shadow-large border border-primary-100/50 group cursor-pointer`}
+                className={`bg-gradient-to-br ${service.gradient} backdrop-blur-sm rounded-3xl p-8 transition-all duration-500 hover:shadow-large border border-primary-200/50 group cursor-pointer`}
               >
                 <motion.div 
-                  className="bg-surface-primary p-4 rounded-2xl w-16 h-16 flex items-center justify-center shadow-soft mb-6 group-hover:scale-110 transition-transform duration-300"
+                  className="bg-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center shadow-soft mb-6 group-hover:scale-110 transition-transform duration-300"
                   whileHover={{ rotate: 10 }}
                 >
                   <IconComponent className={`${service.iconColor}`} size={28} />

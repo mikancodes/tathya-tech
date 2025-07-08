@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-surface-secondary to-primary-50 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      <div className="absolute inset-0 opacity-30">
+        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
+          <defs>
+            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="1" fill="#000000" fillOpacity="0.05"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
       
       {/* Floating Elements */}
       <motion.div
@@ -41,25 +50,39 @@ const Hero: React.FC = () => {
                 <span className="text-accent font-body font-medium text-sm">Innovative Technology Solutions</span>
               </motion.div>
               
-              <h1 className="font-heading font-bold text-display-large lg:text-6xl xl:text-7xl leading-tight text-white mb-8">
-                Transform Your Business with 
-                <motion.span 
-                  className="block text-accent"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+              <div className="overflow-hidden">
+                <motion.h1 
+                  className="font-heading font-bold text-display-large lg:text-6xl xl:text-7xl leading-tight text-text-primary mb-8"
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  Innovative SaaS
-                </motion.span>
-                <span className="block">Solutions</span>
-              </h1>
+                  Transform Your Business with 
+                  <motion.span 
+                    className="block text-accent"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                  >
+                    Innovative SaaS
+                  </motion.span>
+                  <motion.span 
+                    className="block"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                  >
+                    Solutions
+                  </motion.span>
+                </motion.h1>
+              </div>
             </motion.div>
             
             <motion.p 
-              className="font-body text-title-medium text-primary-200 mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+              className="font-body text-title-medium text-text-secondary mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
               We build custom software solutions that drive efficiency, growth, and digital transformation for businesses of all sizes.
             </motion.p>
@@ -68,7 +91,7 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
             >
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -95,7 +118,7 @@ const Hero: React.FC = () => {
               >
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
+                  className="inline-flex items-center justify-center bg-transparent hover:bg-primary-100 text-text-primary border-2 border-primary-300 hover:border-accent px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
                 >
                   Contact Us
                 </Link>
@@ -120,13 +143,14 @@ const Hero: React.FC = () => {
                   src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   alt="Digital Transformation"
                   className="w-full h-auto"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent"></div>
               </motion.div>
               
               {/* Floating Cards */}
               <motion.div
-                className="absolute -top-6 -right-6 bg-surface-primary p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
+                className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
                 initial={{ opacity: 0, y: 20, rotate: -10 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
@@ -139,7 +163,7 @@ const Hero: React.FC = () => {
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-surface-primary p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
+                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-large border border-primary-200/20 backdrop-blur-sm"
                 initial={{ opacity: 0, y: -20, rotate: 10 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 1.4 }}
@@ -166,12 +190,12 @@ const Hero: React.FC = () => {
         transition={{ duration: 0.8, delay: 1.6 }}
       >
         <motion.div
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-text-secondary/30 rounded-full flex justify-center"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           <motion.div
-            className="w-1 h-3 bg-white/50 rounded-full mt-2"
+            className="w-1 h-3 bg-text-secondary/50 rounded-full mt-2"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />

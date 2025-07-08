@@ -24,8 +24,17 @@ const Services: React.FC = () => {
   return (
     <div className="min-h-screen bg-surface-tertiary">
       {/* Hero Section */}
-      <section className="relative py-24 lg:py-32 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      <section className="relative py-24 lg:py-32 bg-gradient-to-br from-white via-surface-secondary to-primary-50 overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
+            <defs>
+              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="30" cy="30" r="1" fill="#000000" fillOpacity="0.05"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <motion.div
@@ -35,7 +44,7 @@ const Services: React.FC = () => {
             className="text-center max-w-5xl mx-auto"
           >
             <motion.h1 
-              className="font-heading font-bold text-display-large lg:text-6xl xl:text-7xl text-white mb-8"
+              className="font-heading font-bold text-display-large lg:text-6xl xl:text-7xl text-text-primary mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -45,7 +54,7 @@ const Services: React.FC = () => {
             </motion.h1>
             
             <motion.p 
-              className="font-body text-title-large text-primary-200 leading-relaxed mb-12 max-w-3xl mx-auto"
+              className="font-body text-title-large text-text-secondary leading-relaxed mb-12 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -63,7 +72,7 @@ const Services: React.FC = () => {
                 href="#services-grid"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center bg-white hover:bg-primary-50 text-primary-900 px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 shadow-large"
+                className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 shadow-large"
               >
                 Explore Services
                 <ArrowRight size={20} className="ml-2" />
@@ -72,7 +81,7 @@ const Services: React.FC = () => {
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
+                  className="inline-flex items-center justify-center bg-transparent hover:bg-primary-100 text-text-primary border-2 border-primary-300 hover:border-accent px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
                 >
                   Get Consultation
                 </Link>
@@ -113,7 +122,7 @@ const Services: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-surface-primary rounded-3xl shadow-soft border border-primary-100/50 overflow-hidden hover:shadow-large transition-all duration-500"
+                  className="bg-white rounded-3xl shadow-soft border border-primary-200/50 overflow-hidden hover:shadow-large transition-all duration-500"
                   style={{ minHeight: isExpanded ? 'auto' : '140px' }}
                 >
                   {/* Service Card Header */}
@@ -163,7 +172,7 @@ const Services: React.FC = () => {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className="border-t border-primary-100/50"
+                        className="border-t border-primary-200/50"
                       >
                         <div className="p-8 lg:p-10 bg-surface-secondary">
                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -173,7 +182,7 @@ const Services: React.FC = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-                                className="bg-surface-primary p-6 rounded-2xl shadow-soft"
+                                className="bg-white p-6 rounded-2xl shadow-soft"
                               >
                                 <h4 className="font-heading font-bold text-title-large text-text-primary mb-6 flex items-center">
                                   <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
@@ -240,8 +249,17 @@ const Services: React.FC = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-primary-100 via-surface-secondary to-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
+            <defs>
+              <pattern id="grid2" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="30" cy="30" r="1" fill="#000000" fillOpacity="0.05"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid2)" />
+          </svg>
+        </div>
         
         <div className="container mx-auto px-6 lg:px-8 relative">
           <motion.div
@@ -251,10 +269,10 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-5xl mx-auto"
           >
-            <h2 className="font-heading font-bold text-display-medium text-white mb-8">
+            <h2 className="font-heading font-bold text-display-medium text-text-primary mb-8">
               Why Choose Our Services?
             </h2>
-            <p className="font-body text-title-medium text-primary-200 mb-16 leading-relaxed">
+            <p className="font-body text-title-medium text-text-secondary mb-16 leading-relaxed">
               Our comprehensive approach ensures that all your technology needs are met under one roof. From infrastructure setup to AI integration, we provide end-to-end solutions that help your business stay competitive in the digital landscape.
             </p>
             
@@ -276,7 +294,7 @@ const Services: React.FC = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <div className="w-3 h-3 bg-accent rounded-full mr-4 flex-shrink-0 group-hover:scale-125 transition-transform duration-200"></div>
-                  <span className="font-body text-body-large text-primary-100 group-hover:text-white transition-colors duration-200">{benefit}</span>
+                  <span className="font-body text-body-large text-text-secondary group-hover:text-text-primary transition-colors duration-200">{benefit}</span>
                 </motion.div>
               ))}
             </div>
@@ -291,7 +309,7 @@ const Services: React.FC = () => {
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center bg-white hover:bg-primary-50 text-primary-900 px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 shadow-large"
+                  className="inline-flex items-center justify-center bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 shadow-large"
                 >
                   Get Free Consultation
                   <ArrowRight size={20} className="ml-2" />
@@ -301,7 +319,7 @@ const Services: React.FC = () => {
               <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center justify-center bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
+                  className="inline-flex items-center justify-center bg-transparent hover:bg-primary-100 text-text-primary border-2 border-primary-300 hover:border-accent px-8 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 backdrop-blur-sm"
                 >
                   View Our Work
                 </Link>
